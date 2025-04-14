@@ -1,0 +1,11 @@
+# Hyper Parameters
+INPUT_SIZE = 784
+NUM_CLASSES = 10
+LEARNING_RATE = 0.001
+BATCH_SIZE = 64
+HIDDEN_LAYERS = 50
+EPOCHS = 3
+
+# Data Set
+NUM_WORKERS = 4
+DATA_DIR = "./dataset"

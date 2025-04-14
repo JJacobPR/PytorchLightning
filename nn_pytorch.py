@@ -7,6 +7,17 @@ from torch.utils.data import DataLoader
 import torchvision.datasets as datasets
 import torchvision.transforms as transforms
 
+# Set Device
+device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+
+# Hyper Parameters
+input_size = 784
+num_classes = 10
+learning_rate = 0.001
+batch_size = 64
+hidden_dim = 50
+epochs = 3
+
 # Create Network
 class NN(nn.Module):
     def __init__(self, input_size, num_classes, hidden_dim):
@@ -19,18 +30,6 @@ class NN(nn.Module):
         x = self.fc2(x)
         return x
 
-
-# Set Device
-device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-
-
-# Hyper Parameters
-input_size = 784
-num_classes = 10
-learning_rate = 0.001
-batch_size = 64
-hidden_dim = 50
-epochs = 3
 
 # Load Data
 train_dataset = datasets.MNIST(root='dataset/', train=True, transform=transforms.ToTensor(), download=True)
@@ -64,7 +63,6 @@ for epoch in range(epochs):
 
 
 # Check Accuracy
-
 def check_accuracy(loader, model):
     num_correct = 0
     num_samples = 0
